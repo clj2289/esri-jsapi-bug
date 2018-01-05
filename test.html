@@ -25,7 +25,7 @@
       "esri/map", 
       "esri/dijit/HomeButton",
       "esri/layers/ArcGISDynamicMapServiceLayer",
-      "esri/geometry/Extent"
+      "esri/geometry/Extent",
       "dojo/domReady!"
     ], function(
       Map, HomeButton, ArcGISDynamicMapServiceLayer, Extent
@@ -48,10 +48,7 @@
       
       var layer;
               layer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
-            map.addLayer(layer);
-      map.on("extent-change", function(e){console.log(e)});
-
-
+            map.addLayer(layer);      
     });
   </script>
 </head>
