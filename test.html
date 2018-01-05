@@ -25,9 +25,10 @@
       "esri/map", 
       "esri/dijit/HomeButton",
       "esri/layers/ArcGISDynamicMapServiceLayer",
+      "esri/geometry/Extent"
       "dojo/domReady!"
     ], function(
-      Map, HomeButton, ArcGISDynamicMapServiceLayer
+      Map, HomeButton, ArcGISDynamicMapServiceLayer, Extent
     )  {
 
       var map = new Map("map", {
@@ -35,9 +36,13 @@
         zoom: 3,
         basemap: "streets"
       });
-            
+            var extent = new esri.geometry.Extent({
+    "xmin":-21737106.49834402,"ymin":-3022440.2286727866,"xmax":9258414.21939985,"ymax":12318777.09627115,
+    "spatialReference":{"wkid":102100}
+  });
       var home = new HomeButton({
-        map: map
+        map: map,
+        extent: extent
       }, "HomeButton");
       home.startup();
       
