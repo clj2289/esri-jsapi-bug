@@ -26,9 +26,10 @@
       "esri/dijit/HomeButton",
       "esri/layers/ArcGISDynamicMapServiceLayer",
       "esri/geometry/Extent",
+      "esri/dijit/Scalebar"
       "dojo/domReady!"
     ], function(
-      Map, HomeButton, ArcGISDynamicMapServiceLayer, Extent
+      Map, HomeButton, ArcGISDynamicMapServiceLayer, Extent, Scalebar
     )  {
 
       var map = new Map("map", {
@@ -45,6 +46,8 @@
         extent: extent
       }, "HomeButton");
       home.startup();
+      
+       var scalebar = new Scalebar({map: map });
       
       var layer;
               layer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
