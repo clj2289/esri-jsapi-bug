@@ -44,7 +44,7 @@
       var layer;
               layer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
             map.addLayer(layer);
-      console.log(map.extent);
+      map.on("extent-change", function(e){console.log(e)});
 
 
     });
