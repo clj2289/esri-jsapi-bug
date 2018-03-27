@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
     <title>Create Map and add a dynamic layer</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css"/>
     <style>
-      html, body, #mapDiv{
-        padding: 0;
-        margin: 0;
-        height: 100%;
-      }
+        html, body, #mapDiv{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
     </style>
     <script src="https://js.arcgis.com/3.23/"></script>
     <script>
-      var map;
+        var map;
 
-      require([
-        "esri/map",
-        "esri/layers/ArcGISDynamicMapServiceLayer"
-      ], function (
-        Map, ArcGISDynamicMapServiceLayer) {
+        require([
+            "esri/map",
+            "esri/layers/ArcGISDynamicMapServiceLayer"
+        ], function (
+            Map, ArcGISDynamicMapServiceLayer) {
 
-        map = new Map("mapDiv", {          
-          center: [-122.45, 37.75]
+            map = new Map("mapDiv", {
+                center: [-86.77711799969592,  32.60827600003745],
+                basemap: "topo"
+            });
+
+
+            //Takes a URL to a non cached map service.
+            var dynamicMapServiceLayer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
+
+            map.addLayer(dynamicMapServiceLayer);
         });
-
-
-        //Takes a URL to a non cached map service.
-        var dynamicMapServiceLayer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
-
-        map.addLayer(dynamicMapServiceLayer);
-      });
     </script>
-  </head>
-  <body>
-    <div id="mapDiv"></div>
-  </body>
+</head>
+<body>
+<div id="mapDiv"></div>
+</body>
 </html>
