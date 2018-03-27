@@ -21,10 +21,11 @@
         "esri/map",
         "esri/layers/ArcGISDynamicMapServiceLayer"
       ], function (
-        Map, ArcGISDynamicMapServiceLayer, ImageParameters) {
+        Map, ArcGISDynamicMapServiceLayer) {
 
         map = new Map("mapDiv", {
           sliderOrientation : "horizontal"
+          center: [-122.45, 37.75], 
         });
 
 
