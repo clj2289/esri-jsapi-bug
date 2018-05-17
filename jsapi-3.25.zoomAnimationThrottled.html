@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Home Extent</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
+  <style>
+    html, body, #map {
+      padding:0;
+      margin:0;
+      height:100%;
+    }
+    #HomeButton {
+      position: absolute;
+      top: 95px;
+      left: 20px;
+      z-index: 50;
+    }
+  </style>
+  <script src="https://js.arcgis.com/3.25/"></script>
+  <script>
+
+    require([
+      "esri/map", 
+      "esri/dijit/HomeButton",
+      "esri/layers/ArcGISDynamicMapServiceLayer",
+      "esri/geometry/Extent",
+      "esri/dijit/Scalebar",
+      "esri/config"
+      "dojo/domReady!"
+    ], function(
+      Map, HomeButton, ArcGISDynamicMapServiceLayer, Extent, Scalebar, esriConfig
+    )  {
+      esriConfig.defaults.map.zoomAnimationThrottled = false;
+      var map = new Map("map", {
+        center: [-56.049, 38.485],
+        zoom: 4,
+        basemap: "hybrid"
+      });
+            var extent = new esri.geometry.Extent({
+    "xmin":-21737106.49834402,"ymin":-3022440.2286727866,"xmax":9258414.21939985,"ymax":12318777.09627115,
+    "spatialReference":{"wkid":102100}
+  });
+      var home = new HomeButton({
+        map: map,
+        extent: extent
+      }, "HomeButton");
+      home.startup();
+      
+       var scalebar = new Scalebar({map: map });
+      
+      var layer;
+              layer = new ArcGISDynamicMapServiceLayer("https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer");
+            map.addLayer(layer);      
+    });
+  </script>
+</head>
+<body>
+  <div id="map" class="map">
+    <div id="HomeButton"></div>
+  </div>
+</body>
+</html>
